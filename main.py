@@ -2,9 +2,11 @@
 import os
 
 import discord
+from dotenv import load_dotenv
 
-TOKEN = 'NzYwMjA5MDQ1NDQwNjkyMjc3.X3It2A.d55a0tsoQ7PAjKIdmG-LOdQQWAU'
-GUILD = 'projects'
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
+GUILD = os.getenv('DISCORD_GUILD')
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
