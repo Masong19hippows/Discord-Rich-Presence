@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-# bot.py
->>>>>>> bcc4f3e67277e227ae585e7e5f87cc2824242db8
 import os
 
 import discord
@@ -11,7 +7,6 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
-<<<<<<< HEAD
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
@@ -41,19 +36,5 @@ async def on_ready():
        print(Activity)
     else:
        print('none')
-=======
-intents = discord.Intents.all()
-client = discord.Client(intents=intents)
-
-@client.event
-async def on_ready():
-  for member in client.get_all_members():
-      print(member)
-#      if member.game == None:
-#          continue
-#  else:
-#      print(member.name, member, member.game)
-
->>>>>>> bcc4f3e67277e227ae585e7e5f87cc2824242db8
 
 client.run(TOKEN)
