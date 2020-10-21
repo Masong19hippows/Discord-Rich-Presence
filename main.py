@@ -1,4 +1,5 @@
 import os
+import sys
 
 import discord
 from dotenv import load_dotenv
@@ -17,6 +18,7 @@ async def on_ready():
    
    guild = discord.utils.get(client.guilds, name=GUILD)
    member = discord.utils.get(guild.members, name="Masong19hippows")
+   
    if member.activities == ():
       print('none')
    else:
