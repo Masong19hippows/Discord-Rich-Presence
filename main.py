@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-import test
 import sys
 import pickle
 import os.path
@@ -34,19 +33,25 @@ async def on_ready():
             name = activity.name
             Type = "Playing"
             act = Type + ' ' + name
+            update(docId=DOCUMENT_ID).delEvry()
+            update(docId=DOCUMENT_ID).insertText(index='1', words=act)
          elif isinstance(activity, discord.activity.Streaming):
             name = activity.name
             plat = activity.platform
             Type = "Streaming"
             Activity = f"{name} on {plat}"
             act = Type + ' ' + Activity
+            update(docId=DOCUMENT_ID).delEvry()
+            update(docId=DOCUMENT_ID).insertText(index='1', words=act)
          elif isinstance(activity, discord.activity.Spotify):
             name = activity.title
             artist = ', '.join(activity.artists)
-            # imageURL = activity.album_cover_url
+            imageURL = activity.album_cover_url
             Type = "Listening to Spotify:"
             Activity = f"Song Name: {name}     Song Artists: {artist}"
             act = Type + '      ' + Activity
-   update(docId=DOCUMENT_ID).insertText(index='1',words=act)
+            update(docId=DOCUMENT_ID).delEvry()
+            update(docId=DOCUMENT_ID).insertText(index='1', words=act)
+            update(docId=DOCUMENT_ID).insertImage(index='1', URL=imageURL)
 
 client.run(TOKEN)

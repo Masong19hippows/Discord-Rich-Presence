@@ -18,18 +18,19 @@ class update():
 
    SCOPES = ['https://www.googleapis.com/auth/documents']
    creds = None
+   mydir = os.path.dirname(__file__)
 
-   if os.path.exists('token.pickle'):
-      with open('token.pickle', 'rb') as token:
+   if os.path.exists(mydir + '/token.pickle'):
+      with open(mydir + '/token.pickle', 'rb') as token:
          creds = pickle.load(token)
          
    if not creds or not creds.valid:
       if creds and creds.expired and creds.refresh_token:
          creds.refresh(Request())
       else:
-         flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+         flow = InstalledAppFlow.from_client_secrets_file(mydir + '/credentials.json', SCOPES)
          creds = flow.run_local_server(port=0)
-         with open('token.pickle', 'wb') as token:
+         with open(mydir + '/token.pickle', 'wb') as token:
             pickle.dump(creds, token)
       
    service = build('docs', 'v1', credentials=creds)
@@ -89,4 +90,4 @@ class update():
          }  
       },
       ]
-      result = self.service.documents().batchUpdate(documentId=self.docId, body={'requests': requests}).execute
+      result = self.service.documents().batchUpdate(documentId=self.docId, body={'requests': requests}).execute()
