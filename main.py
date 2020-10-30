@@ -10,7 +10,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 import discord
 from dotenv import load_dotenv
-from test import update
+from Docs import update
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
