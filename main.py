@@ -1,16 +1,22 @@
 #!/usr/bin/env python3
 
 import os
+import test
 import sys
-
+import pickle
+import os.path
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
 import discord
 from dotenv import load_dotenv
+from test import update
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
-
+DOCUMENT_ID = '1JBy1rmy3HQ6Dx9Ab9ERlxDSXT3O854RKhv6kVwmAf4s'
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 
@@ -21,27 +27,26 @@ async def on_ready():
    member = discord.utils.get(guild.members, name="Masong19hippows")
 
    if member.activities == ():
-      print('none')
+      act = 'none'
    else:
       for activity in member.activities:
          if isinstance(activity, discord.activity.Game):
             name = activity.name
             Type = "Playing"
-            Activity = f"{name}"
-            Final = Type + ' ' + Activity
-            print(Final)
+            act = Type + ' ' + name
          elif isinstance(activity, discord.activity.Streaming):
-            name2 = activity.name
-            name3 = activity.platform
+            name = activity.name
+            plat = activity.platform
             Type = "Streaming"
-            Activity = f"{name2} on {name3}"
-            Final = Type + ' ' + Activity
-            print(Final)
+            Activity = f"{name} on {plat}"
+            act = Type + ' ' + Activity
          elif isinstance(activity, discord.activity.Spotify):
-            name4 = activity.title
-            name5 = ', '.join(activity.artists)
+            name = activity.title
+            artist = ', '.join(activity.artists)
+            # imageURL = activity.album_cover_url
             Type = "Listening to Spotify:"
-            Activity = f"Song Name: {name4}\nSong Artists: {name5}"
-            Final = Type + '\n' + Activity
-            print(Final)
+            Activity = f"Song Name: {name}     Song Artists: {artist}"
+            act = Type + '      ' + Activity
+   update(docId=DOCUMENT_ID).insertText(index='1',words=act)
+
 client.run(TOKEN)
