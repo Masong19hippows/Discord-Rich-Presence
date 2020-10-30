@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
 
 import os
-import sys
 import pickle
-import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-from dotenv import load_dotenv
-
 
 class update():
    

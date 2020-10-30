@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-import sys
-import pickle
-import os.path
 import discord
 from dotenv import load_dotenv
 from Docs import update
