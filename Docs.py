@@ -41,13 +41,13 @@ class update():
       {
          'insertText': {
             'location': {
-               'index': 1,
+               'index': index,
                },
             'text': words
             }
       },
       ]
-      result = self.service.documents().batchUpdate(documentId=self.docId, body={'requests': requests}).execute()
+      self.service.documents().batchUpdate(documentId=self.docId, body={'requests': requests}).execute()
    
    def delEvry(self):
 
@@ -66,7 +66,7 @@ class update():
 
         },
          ]
-      result = self.service.documents().batchUpdate(documentId=self.docId, body={'requests': requests}).execute()
+      self.service.documents().batchUpdate(documentId=self.docId, body={'requests': requests}).execute()
 
    def insertImage(self, index, URL):
       requests = [
@@ -90,4 +90,4 @@ class update():
          }  
       },
       ]
-      result = self.service.documents().batchUpdate(documentId=self.docId, body={'requests': requests}).execute()
+      self.service.documents().batchUpdate(documentId=self.docId, body={'requests': requests}).execute()
