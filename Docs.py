@@ -16,22 +16,22 @@ class update():
    creds = None
    mydir = os.path.dirname(__file__)
 
-   if os.path.exists(mydir + '/token.pickle'):
-      with open(mydir + '/token.pickle', 'rb') as token:
+   if os.path.exists(mydir + '/creds/token.pickle'):
+      with open(mydir + '/creds/token.pickle', 'rb') as token:
          creds = pickle.load(token)
          
    if not creds or not creds.valid:
       if creds and creds.expired and creds.refresh_token:
          creds.refresh(Request())
       else:
-         flow = InstalledAppFlow.from_client_secrets_file(mydir + '/credentials.json', SCOPES)
+         flow = InstalledAppFlow.from_client_secrets_file(mydir + '/creds/credentials.json', SCOPES)
          creds = flow.run_local_server(port=0)
-         with open(mydir + '/token.pickle', 'wb') as token:
+         with open(mydir + '/creds/token.pickle', 'wb') as token:
             pickle.dump(creds, token)
       
    service = build('docs', 'v1', credentials=creds)
 
-   def insertText(self, words, index):
+   def insertText(self, text, index):
 
       requests = [
       {
@@ -39,7 +39,7 @@ class update():
             'location': {
                'index': index,
                },
-            'text': words
+            'text': text
             }
       },
       ]

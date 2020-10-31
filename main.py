@@ -5,7 +5,7 @@ import discord
 from dotenv import load_dotenv
 from Docs import update
 
-load_dotenv()
+load_dotenv('creds/.env')
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
@@ -45,10 +45,10 @@ async def on_ready():
             act = 'none'
    if imageURL is None:
       update(docId=DOCUMENT_ID).delEvry()
-      update(docId=DOCUMENT_ID).insertText(index='1', words=act)
+      update(docId=DOCUMENT_ID).insertText(index='1', text=act)
    else:
       update(docId=DOCUMENT_ID).delEvry()
-      update(docId=DOCUMENT_ID).insertText(index='1', words=act)
+      update(docId=DOCUMENT_ID).insertText(index='1', text=act)
       update(docId=DOCUMENT_ID).insertImage(index='1', URL=imageURL)
 
 
