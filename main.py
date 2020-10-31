@@ -50,6 +50,6 @@ async def on_ready():
       update(docId=DOCUMENT_ID).delEvry()
       update(docId=DOCUMENT_ID).insertText(index='1', text=act)
       update(docId=DOCUMENT_ID).insertImage(index='1', URL=imageURL)
-
+   await client.logout()
 
 client.run(TOKEN)
