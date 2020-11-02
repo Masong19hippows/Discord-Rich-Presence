@@ -5,13 +5,15 @@ import discord
 from dotenv import load_dotenv
 from Docs import update
 
-load_dotenv('creds/.env')
+# This sets some variables. The Token is from a .env file along with Guild. 
+# Document ID is for the Docs.py to change the Doc.
+# The intents are to set discord intents as admin.
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
-
-DOCUMENT_ID = '1JBy1rmy3HQ6Dx9Ab9ERlxDSXT3O854RKhv6kVwmAf4s'
+DOCUMENT_ID = '1coFFEtWUnq92p7yTNq5fMmIwinpeboMbArenKa060V0'
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
+
 
 @client.event
 async def on_ready():
