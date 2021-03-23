@@ -3,8 +3,16 @@ The goal of this is to use the discord.py api wrapper to get rich presence (the 
 
 This project requires Python <= 3.7
 
-# Install #
+## Install
 
 In the main directory run `sudo python3 -m pip install -r requirements.txt`
 
 After this, head to the [creds](https://github.com/Masong19hippows/Discord-Rich-Presence/tree/main/creds) directory and follow the instructions there.
+
+## Running The Program
+
+After you follow all of the steps in [creds](https://github.com/Masong19hippows/Discord-Rich-Presence/tree/main/creds) directory and follow the instructions there., then you can run the program.
+
+To Run, you just need to run `python3 main.py`
+
+# Have Fun
